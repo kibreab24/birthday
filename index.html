@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Hewi! 🎉</title>
+<style>
+  :root {
+    --hot-pink: #ff2e63;
+    --electric-blue: #08d9d6;
+    --sunny-yellow: #ffd23f;
+    --deep-purple: #252a34;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: var(--deep-purple);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255,46,99,0.35), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(8,217,214,0.3), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,210,63,0.25), transparent 45%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 14px;
+    overflow-x: hidden;
+    color: var(--white);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+    animation: slideUp 0.7s cubic-bezier(.2,.9,.3,1.1);
+  }
+
+  @keyframes slideUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--sunny-yellow);
+    color: var(--deep-purple);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    transform: rotate(-3deg);
+  }
+
+  h1 {
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  h1 .accent {
+    background: linear-gradient(90deg, var(--hot-pink), var(--electric-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .name {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--hot-pink);
+    text-shadow: 3px 3px 0 var(--electric-blue);
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .grid img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 3px solid var(--white);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+
+  .grid div:nth-child(1) img { transform: rotate(-3deg); }
+  .grid div:nth-child(2) img { transform: rotate(2deg); }
+  .grid div:nth-child(3) img { transform: rotate(2deg); }
+  .grid div:nth-child(4) img { transform: rotate(-2deg); }
+
+  .wish {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+    border: 2px solid var(--electric-blue);
+    border-radius: 20px;
+    padding: 18px 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    border: none;
+    padding: 14px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  .btn:active { transform: scale(0.95); }
+
+  .btn-primary {
+    background: linear-gradient(90deg, var(--hot-pink), #ff6b9d);
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,46,99,0.45);
+  }
+
+  .btn-secondary {
+    background: linear-gradient(90deg, var(--electric-blue), #4de8e5);
+    color: var(--deep-purple);
+    box-shadow: 0 8px 20px rgba(8,217,214,0.4);
+  }
+
+  .confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    z-index: 1;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0.7; }
+  }
+
+  .sound-hint {
+    display: none;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--electric-blue);
+    color: var(--deep-purple);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    z-index: 3;
+    cursor: pointer;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="tag">🎉 birthday alert</div>
+  <h1>Happy <span class="accent">Birthday</span></h1>
+  <div class="name">HEWI</div>
+
+  <div class="grid">
+    <div><img src="photo1.jpg" alt="Hewi"></div>
+    <div><img src="photo2.jpg" alt="Hewi"></div>
+    <div><img src="photo3.jpg" alt="Hewi"></div>
+    <div><img src="photo4.jpg" alt="Hewi"></div>
+  </div>
+
+  <div class="wish" id="wishText">
+    Congrats on surviving another lap around the sun without your phone battery dying at a crucial moment 🔋😂
+    You're proof that main character energy is a real personality trait. May your birthday be filled with
+    zero notifications from group projects, unlimited snacks, and photos this iconic every single day. 📸✨
+    Happy Birthday, Hewi — the plot armor is real with you!
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="playSong()">🎵 Play your song</button>
+    <button class="btn btn-primary" onclick="popConfetti(); stopSongThenGo();">🎁 Open your surprise</button>
+  </div>
+</div>
+
+<div class="sound-hint" id="soundHint" onclick="playSong(); this.style.display='none';">🔊 Tap for sound</div>
+
+<script>
+  function popConfetti() {
+    const colors = ['#ff2e63', '#08d9d6', '#ffd23f', '#ff6b9d', '#4de8e5'];
+    for (let i = 0; i < 45; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration = (2 + Math.random() * 2) + 's';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }
+  }
+
+  window.addEventListener('load', () => setTimeout(popConfetti, 400));
+
+  // Play "Happy Birthday" tune with a music-box style layered tone
+  let audioCtx;
+  let activeNodes = [];
+
+  const NOTES = { C4:261.63, D4:293.66, E4:329.63, F4:349.23, G4:392.00, A4:440.00, B4:493.88,
+              C5:523.25, D5:587.33, E5:659.25, F5:698.46, G5:783.99 };
+
+  const melody = [
+    [NOTES.G4,0.3],[NOTES.G4,0.3],[NOTES.A4,0.6],[NOTES.G4,0.6],[NOTES.C5,0.6],[NOTES.B4,1.1],
+    [NOTES.G4,0.3],[NOTES.G4,0.3],[NOTES.A4,0.6],[NOTES.G4,0.6],[NOTES.D5,0.6],[NOTES.C5,1.1],
+    [NOTES.G4,0.3],[NOTES.G4,0.3],[NOTES.G5,0.6],[NOTES.E5,0.6],[NOTES.C5,0.6],[NOTES.B4,0.6],[NOTES.A4,1.1],
+    [NOTES.F5,0.3],[NOTES.F5,0.3],[NOTES.E5,0.6],[NOTES.C5,0.6],[NOTES.D5,0.6],[NOTES.C5,1.4]
+  ];
+
+  function playNote(freq, startTime, dur) {
+    [[freq, 0.28, 'triangle'], [freq * 2, 0.09, 'sine']].forEach(([f, vol, type]) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.value = f;
+      gain.gain.setValueAtTime(0.0001, startTime);
+      gain.gain.exponentialRampToValueAtTime(vol, startTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur * 0.9);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + dur);
+      activeNodes.push(gain);
+    });
+  }
+
+  function playSong() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    activeNodes = [];
+    let t = audioCtx.currentTime + 0.05;
+    melody.forEach(([freq, dur]) => {
+      playNote(freq, t, dur);
+      t += dur;
+    });
+  }
+
+  function fadeOutSong() {
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime;
+    activeNodes.forEach(g => {
+      g.gain.cancelScheduledValues(now);
+      g.gain.setValueAtTime(g.gain.value, now);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+    });
+  }
+
+  function stopSongThenGo() {
+    fadeOutSong();
+    setTimeout(() => { window.location.href = 'gifts.html'; }, 500);
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') {
+        document.getElementById('soundHint').style.display = 'block';
+      } else {
+        playSong();
+      }
+    }, 600);
+  });
+</script>
+
+</body>
+</html>
